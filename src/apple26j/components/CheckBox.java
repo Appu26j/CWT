@@ -275,7 +275,7 @@ public class CheckBox extends Component
 
             else
             {
-                GUI.drawRect(this.x, this.y, this.width, this.height, this.isInside(mouseX, mouseY, this.x, this.y, this.width, this.height) && this.clicked ? new Color(205, 230, 245) : new Color(255, 255, 255));
+                GUI.drawRect(this.x, this.y, this.width, this.height, this.isInside(mouseX, mouseY, this.x, this.y, this.width + 5 + this.parentWindow.getDefaultFontRenderer(this.fontSize).getStringWidth(this.text), this.height) && this.clicked ? new Color(205, 230, 245) : new Color(255, 255, 255));
                 glEnable(GL_ALPHA);
                 glEnable(GL_BLEND);
                 glEnable(GL_LINE_SMOOTH);
@@ -283,7 +283,7 @@ public class CheckBox extends Component
                 float previousLineWidth = glGetFloat(GL_LINE_WIDTH);
                 glLineWidth(1.5F);
                 GL14.glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-                int colorRGB = (this.isInside(mouseX, mouseY, this.x, this.y, this.width, this.height) ? this.clicked ? new Color(0, 85, 155) : new Color(0, 120, 215) : this.clicked ? new Color(0, 85, 155) : new Color(70, 70, 70)).getRGB();
+                int colorRGB = (this.isInside(mouseX, mouseY, this.x, this.y, this.width + 5 + this.parentWindow.getDefaultFontRenderer(this.fontSize).getStringWidth(this.text), this.height) ? this.clicked ? new Color(0, 85, 155) : new Color(0, 120, 215) : this.clicked ? new Color(0, 85, 155) : new Color(70, 70, 70)).getRGB();
                 float alpha = (float)((colorRGB >> 24) & 0xFF) / 255;
                 float red = (float)((colorRGB >> 16) & 0xFF) / 255;
                 float green = (float)((colorRGB >> 8) & 0xFF) / 255;
@@ -311,7 +311,7 @@ public class CheckBox extends Component
 
         else
         {
-            GUI.drawOutline(this.x, this.y, this.width, this.height, this.isInside(mouseX, mouseY, this.x, this.y, this.width, this.height) ? this.clicked ? new Color(0, 85, 155) : new Color(0, 120, 215) : this.clicked ? new Color(0, 120, 215) : new Color(50, 50, 50));
+            GUI.drawOutline(this.x, this.y, this.width, this.height, this.isInside(mouseX, mouseY, this.x, this.y, this.width + 5 + this.parentWindow.getDefaultFontRenderer(this.fontSize).getStringWidth(this.text), this.height) ? this.clicked ? new Color(0, 85, 155) : new Color(0, 120, 215) : this.clicked ? new Color(0, 120, 215) : new Color(50, 50, 50));
             this.parentWindow.getDefaultFontRenderer(this.fontSize).drawString(this.text, this.width + 5, ((this.y + this.height) / 2) - (this.parentWindow.getDefaultFontRenderer(this.fontSize).getSize() / 2.0F), new Color(0, 0, 0));
         }
     }
@@ -319,7 +319,7 @@ public class CheckBox extends Component
     @Override
     public void mouseClicked(int mouseButton, int mouseX, int mouseY)
     {
-        if (!this.disabled && this.isInside(mouseX, mouseY, this.x, this.y, this.width, this.height) && mouseButton == 0)
+        if (!this.disabled && this.isInside(mouseX, mouseY, this.x, this.y, this.width + 5 + this.parentWindow.getDefaultFontRenderer(this.fontSize).getStringWidth(this.text), this.height) && mouseButton == 0)
         {
             this.clicked = true;
         }
@@ -330,7 +330,7 @@ public class CheckBox extends Component
     {
         if (!this.disabled && this.clicked)
         {
-            if (this.isInside(mouseX, mouseY, this.x, this.y, this.width, this.height) && mouseButton == 0)
+            if (this.isInside(mouseX, mouseY, this.x, this.y, this.width + 5 + this.parentWindow.getDefaultFontRenderer(this.fontSize).getStringWidth(this.text), this.height) && mouseButton == 0)
             {
                 this.ticked = !this.ticked;
 
