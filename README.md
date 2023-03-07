@@ -1,5 +1,5 @@
 # CWT
-CWT, an OpenGL GUI made to look like Windows' native GUI.
+CWT, an OpenGL GUI made to look like Windows 10's GUI.
 
 Example code:
 
